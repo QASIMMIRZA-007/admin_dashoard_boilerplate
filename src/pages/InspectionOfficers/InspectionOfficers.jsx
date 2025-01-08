@@ -1,5 +1,6 @@
 import React from "react";
 import { Table, Tag } from "antd";
+import { FaRegEye } from "react-icons/fa";
 
 const InspectionOfficers = () => {
   const columns = [
@@ -22,8 +23,16 @@ const InspectionOfficers = () => {
       title: "Payment Status",
       dataIndex: "paymentStatus",
       key: "paymentStatus",
-      render: (status) => (
-        <Tag color={status === "Paid" ? "green" : "red"}>{status}</Tag>
+    },
+    {
+      title: "Action",
+      dataIndex: "action",
+      key: "action",
+      render: (_, record) => (
+        // <Tag color={status === "Paid" ? "green" : "red"}>{status}</Tag>
+        <FaRegEye
+          style={{ color: "#000", fontSize: "20px", cursor: "pointer" }}
+        />
       ),
     },
   ];
@@ -60,7 +69,12 @@ const InspectionOfficers = () => {
     },
   ];
 
-  return <Table columns={columns} dataSource={data} />;
+  return (
+    <>
+      <h3 className="sectionHeading"> Inspection Officers</h3>
+      <Table columns={columns} dataSource={data} bordered />;
+    </>
+  );
 };
 
 export default InspectionOfficers;

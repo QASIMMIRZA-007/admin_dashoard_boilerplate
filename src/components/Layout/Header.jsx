@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 
-import { LogoutIcon } from "../../assets";
+import { logo, LogoutIcon } from "../../assets";
 import "./Header.scss";
 import { usePostApi } from "../../hooks/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -50,7 +50,8 @@ const Header = ({ navigation }) => {
   return (
     <div className="header">
       <div className="header-logo">
-        <h1>REACTADMIN</h1>
+        {/* <h1>REACTADMIN</h1> */}
+        <ReactSVG src={logo} />
       </div>
 
       <div className="header-menu">{renderRoutes}</div>

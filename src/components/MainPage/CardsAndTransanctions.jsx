@@ -59,12 +59,14 @@ const CardsAndTransanctions = () => {
               placeholder="From"
               name="fromDate"
               format={"DD/MM/YYYY"}
+              style={{ color: "black" }}
               onChange={(date, dateString) =>
                 handleChange(date, dateString, "fromDate")
               }
             />
             <DatePicker
               placeholder="To"
+              style={{ color: "black" }}
               name="toDate"
               format={"DD/MM/YYYY"}
               onChange={(date, dateString) =>

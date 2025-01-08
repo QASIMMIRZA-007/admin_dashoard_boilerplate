@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import { Drawer } from "antd";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-import { LogoutIcon, ProfileImage, SearchIcon } from "../../assets";
+import { logo, LogoutIcon, ProfileImage, SearchIcon } from "../../assets";
 import { useCurrentRoute } from "../../routes/route-context";
 import Breadcrumb from "../Utilities/BreadCrumb";
 
@@ -47,9 +47,10 @@ const Topbar = ({ navigation }) => {
     <div className="topbar">
       <div>
         <h2 className="page-headings-in-topbar">
-          {currentRoute ? currentRoute.title : "Admin"}
+          {currentRoute ? currentRoute.title : "Dashboard"}
+          {/* {currentRoute?.title} */}
         </h2>
-        <Breadcrumb />
+        {/* <Breadcrumb /> */}
       </div>
       <div className="search-wrapper">
         {showInput && (
@@ -72,7 +73,12 @@ const Topbar = ({ navigation }) => {
           </div>
           <div className="picture-actions">
             <Link to={`/admin/profile`}>
-              <img src={ProfileImage} alt="Profile" />
+              <img
+                src={
+                  "https://plus.unsplash.com/premium_photo-1681823422920-8bbe01d9235f?q=80&w=1878&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                }
+                alt="Profile"
+              />
             </Link>
           </div>
         </div>
@@ -87,7 +93,8 @@ const Topbar = ({ navigation }) => {
         className="mobile-menu-drawer"
       >
         <div className="sidebar sidebar-mobile">
-          <h1>REACTADMIN</h1>
+          {/* <h1>REACTADMIN</h1> */}
+          <ReactSVG src={logo} />
           <div className="sidebar-menu">{renderRoutes}</div>
           <Link
             to={`/admin/login`}

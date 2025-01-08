@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import { Drawer } from "antd";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-import { LogoutIcon, ProfileImage, SearchIcon } from "../../assets";
+import { logo, LogoutIcon, ProfileImage, SearchIcon } from "../../assets";
 import { useCurrentRoute } from "../../routes/route-context";
 import Breadcrumb from "../Utilities/BreadCrumb";
 
@@ -87,7 +87,7 @@ const Footer = ({ navigation }) => {
         className="mobile-menu-drawer"
       >
         <div className="sidebar sidebar-mobile">
-          <h1>REACTADMIN</h1>
+          <ReactSVG src={logo} />
           <div className="sidebar-menu">{renderRoutes}</div>
           <Link
             to={`/admin/login`}

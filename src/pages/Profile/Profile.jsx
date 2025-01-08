@@ -77,7 +77,11 @@ const Profile = () => {
     <div className="profile-page">
       <div className="profile-container">
         <div className="profile-image">
-          <img src={profileImage} />
+          <img
+            src={
+              "https://plus.unsplash.com/premium_photo-1681823422920-8bbe01d9235f?q=80&w=1878&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+          />
           <label htmlFor="image-upload" className="upload-button">
             <h6>Upload profile image</h6>
             <input

@@ -1,16 +1,25 @@
 import React from "react";
+import InspectionOfficers from "../pages/InspectionOfficers/InspectionOfficers";
+import TotalInspections from "../pages/TotalInspections/TotalInspections";
+import Dashboard from "../pages/Dashboard/Dashboard";
 
 const APP_ROUTES = [
   {
-    path: "/",
-    children: [],
+    path: "./dashboard",
+    children: <Dashboard />,
     title: "Dashboard",
   },
   {
     path: "/inspection-officers",
-    children: [],
+    children: <InspectionOfficers />,
     title: "Inspection Officers",
   },
+  {
+    path: "/total-inspections",
+    children: <TotalInspections />,
+    title: "Total Inspections",
+  },
+
   {
     path: "/profile",
     children: [],

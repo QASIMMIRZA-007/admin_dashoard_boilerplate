@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import PrimaryButton from "../../components/UI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
-// import "./forgotPassword.scss";
+import "./ForgotPassword.scss";
 import { usePostApi } from "../../hooks/api";
+import { logo } from "../../assets";
+import { ReactSVG } from "react-svg";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -50,25 +52,30 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="forgot-password-container">
-      {/* <img src={LogoImage} className="forgot-password-logo" alt="Logo" /> */}
-      <h2>Forgot Password?</h2>
-      <p>
-        You'll receive a code on your email <span>example@gmail.com</span> to
-        verify you are the owner.
-      </p>
-      <input
-        type="email"
-        placeholder="Email address"
-        className="forgot-password-input"
-        name="email"
-        value={formValues.email}
-        onChange={handleInputChange}
-      />
-      {errors.email && <span className="error">{errors.email}</span>}
-      <PrimaryButton onClick={onSubmitReset} className="forgot-password-button">
-        {isLoading ? "Submitting..." : "Submit"}
-      </PrimaryButton>
+    <div className="main-forgot-password-container">
+      <div className="forgot-password-container">
+        {/* <ReactSVG src={logo} className="forgot-password-logo" alt="Logo" /> */}
+        <h2>Forgot Password?</h2>
+        <p>
+          You'll receive a code on your email <span>example@gmail.com</span> to
+          verify you are the owner.
+        </p>
+        <input
+          type="email"
+          placeholder="Email address"
+          className="forgot-password-input"
+          name="email"
+          value={formValues.email}
+          onChange={handleInputChange}
+        />
+        {errors.email && <span className="error">{errors.email}</span>}
+        <PrimaryButton
+          onClick={onSubmitReset}
+          className="forgot-password-button"
+        >
+          {isLoading ? "Submitting..." : "Submit"}
+        </PrimaryButton>
+      </div>
     </div>
   );
 };

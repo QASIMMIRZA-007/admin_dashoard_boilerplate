@@ -17,7 +17,7 @@ export function useApiRequest(method) {
   const dispatch = useDispatch();
 
   const apiCall = async ({ path, data = {} }) => {
-    console.log(path, data,"api call function");
+    console.log(path, data, "api call function");
     try {
       const params = [
         `${BASE_URL}/${path}`,
@@ -169,7 +169,6 @@ export function useFetch(queryKey, path, config = {}) {
 
   useEffect(() => {
     if (error) {
-      // Handle error, such as showing an error message
       console.error("Error fetching data:", error);
     }
   }, [error]);

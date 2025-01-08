@@ -25,7 +25,11 @@
   .sidebar-logo {
     position: relative;
     width: 100%;
-    text-align: justify;
+    // text-align: justify;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .sidebar-menu {
@@ -34,9 +38,13 @@
     width: 100%;
     .active {
       border-radius: 10px;
-      background: $background;
+      background: $primaryColor;
       height: 50px;
       color: white;
+      &:hover {
+        background: $primaryColor;
+        color: white;
+      }
       .menu-item {
         svg {
           fill: white;
@@ -55,12 +63,14 @@
       &:hover {
         border-radius: 10px;
         background: rgba(199, 199, 199, 0.412);
+        // background-color: opacityColor($secondaryColor, 0.1);
       }
 
       .menu-item {
         padding-inline: 10px;
         @include flex(row, "", center);
-        gap: 20px;
+        gap: 10px;
+
         height: 50px;
 
         .menu-icon {

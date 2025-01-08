@@ -6,7 +6,7 @@ import { GiPoliceOfficerHead } from "react-icons/gi";
 
 const SIDEBAR_ROUTES = [
   {
-    path: "./",
+    path: "./dashboard",
     name: "Dashboard",
     icon: <CgMenuGridR />,
   },
@@ -16,17 +16,17 @@ const SIDEBAR_ROUTES = [
   //   icon: <FaUsers />,
   // },
   {
-    path: "/inspection-officers",
-    name: "Officers",
+    path: "./inspection-officers",
+    name: "Inspection Officers",
     icon: <GiPoliceOfficerHead />,
   },
   {
-    path: "./",
+    path: "./total-inspections",
     name: "Total Inspections",
     icon: <FaUsers />,
   },
   {
-    path: "./",
+    path: "./contact-us",
     name: "Contact Us",
     icon: <BiSolidContact />,
   },

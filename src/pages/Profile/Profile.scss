@@ -38,10 +38,13 @@
         }
         input {
           color: $primaryColor;
+          color: #000;
           font-weight: 500;
           font-size: 15px;
+          outline: none;
+          border: 1px solid #999;
           &::placeholder {
-            color: $secondaryColor;
+            color: #9999;
           }
         }
         button {

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 
-import { LogoutIcon } from "../../assets";
+import { logo, LogoutIcon } from "../../assets";
 import "./Sidebar.scss";
 import { usePostApi } from "../../hooks/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -51,7 +51,12 @@ const Sidebar = ({ navigation }) => {
   return (
     <div className="sidebar">
       <div className="sidebar-logo">
-        <h1>REACTADMIN</h1>
+        {/* <h1>REACTADMIN</h1> */}
+        <ReactSVG
+          src={logo}
+          onClick={() => navigate("/admin/dashboard")}
+          style={{ cursor: "pointer" }}
+        />
       </div>
 
       <div className="sidebar-menu">{renderRoutes}</div>

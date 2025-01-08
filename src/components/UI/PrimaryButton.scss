@@ -2,16 +2,18 @@
 @import "../../styles/variables";
 
 .primary-button {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   padding: 10px 20px;
-  height: 40px;
+  height: 50px;
   @include customBorder(1px, solid, $tertiaryColor);
   color: white;
-  background: $background;
+  background: $primaryColor;
   box-shadow: $box-shadow;
   border-radius: 10px;
   transition: all 0.2s;
+  border: none;
+
   &:hover {
     background-color: transparent;
     color: $primaryColor;

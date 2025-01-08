@@ -4,9 +4,12 @@ import "./Dashboard.scss";
 import CardsAndTransanctions from "../../components/MainPage/CardsAndTransanctions";
 import Transanctions from "../../components/MainPage/Transanctions";
 import ChartContainer from "../../components/MainPage/ChartContainer";
+import LineAreaChart from "../AllCharts/lineareachart";
+import LineBarAreaChart from "../AllCharts/LineBarAreaChart";
+import InspectionsOfficerContainer from "../../components/MainPage/InspectionsOfficerContainer";
 
 const ODERS_DATA = {
-  heading: "Orders",
+  heading: "Inspection Requests",
   chartData: [
     { day: "1 Apr", users: 2500 },
     { day: "2 Apr", users: 2200 },
@@ -23,7 +26,7 @@ const ODERS_DATA = {
 };
 
 const USERS_DATA = {
-  heading: "Users",
+  heading: "Inspection Officers",
   chartData: [
     { day: "1 Apr", users: 200 },
     { day: "2 Apr", users: 1600 },
@@ -45,8 +48,10 @@ const Dashboard = () => {
       <div className="main-container">
         <CardsAndTransanctions />
         <Transanctions />
+        {/* <LineAreaChart /> */}
         <ChartContainer data={ODERS_DATA} />
-        <ChartContainer data={USERS_DATA} />
+        <InspectionsOfficerContainer data={USERS_DATA} />
+        {/* <ChartContainer data={USERS_DATA} /> */}
       </div>
     </div>
   );

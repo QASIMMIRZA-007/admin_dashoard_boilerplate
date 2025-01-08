@@ -1,6 +1,6 @@
 @import "./variables";
 @import "./mixins";
-
+@import "./antd-configuration/configuration.scss";
 * {
   box-sizing: border-box;
   font-family: $primaryFont;
@@ -121,7 +121,9 @@ body {
 }
 
 .ant-table-wrapper .ant-table-pagination-right {
-  justify-content: flex-start !important;
+  // justify-content: flex-start !important;
+  background: none !important;
+  // display: block !important;
 }
 
 .ant-table-wrapper .ant-table-pagination.ant-pagination {
@@ -198,4 +200,11 @@ body {
   background-color: opacityColor($primaryColor, 0.1);
   border-radius: $primaryBorderRadius;
   padding: 4px 7px;
+}
+
+.sectionHeading {
+  margin: 30px 0 20px 0;
+  font-size: 30px;
+  font-weight: 600;
+  color: #000;
 }

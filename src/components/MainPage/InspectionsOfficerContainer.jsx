@@ -10,10 +10,10 @@ import {
   ArrowRightIcon,
   CalendarIcon,
 } from "../../assets";
-import BarChart from "../../pages/AllCharts/CustomBarChart";
 import CustomBarChart from "../../pages/AllCharts/CustomBarChart";
+import LineBarAreaChart from "../../pages/AllCharts/LineBarAreaChart";
 
-export const ChartContainer = ({ data }) => {
+export const InspectionsOfficerContainer = ({ data }) => {
   return (
     <div className="chart-container">
       <div className="container-top">
@@ -39,7 +39,7 @@ export const ChartContainer = ({ data }) => {
           </div>
         </div>
         <div className="chart">
-          <CustomBarChart />
+          <LineBarAreaChart />
           {/* <Chart data={data.chartData} /> */}
         </div>
       </div>
@@ -47,4 +47,4 @@ export const ChartContainer = ({ data }) => {
   );
 };
 
-export default ChartContainer;
+export default InspectionsOfficerContainer;

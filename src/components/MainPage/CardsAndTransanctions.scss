@@ -67,11 +67,11 @@
         @include flex(row, space-between, center);
         gap: 5px;
         input {
-          color: $primaryColor;
+          color: #000;
           height: 30px;
           width: 110px;
           &::placeholder {
-            color: $secondaryColor;
+            color: #9999;
           }
         }
         div {

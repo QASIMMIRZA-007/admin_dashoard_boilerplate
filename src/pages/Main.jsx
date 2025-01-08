@@ -11,11 +11,13 @@ import Dashboard from "./Dashboard/Dashboard";
 import Profile from "./Profile/Profile";
 import { useSelector } from "react-redux";
 import InspectionOfficers from "./InspectionOfficers/InspectionOfficers";
+import TotalInspections from "./TotalInspections/TotalInspections";
+import ContactUs from "./ContactUs/ContactUs";
 
 const Main = ({ navigation }) => {
-  // const isLoggedIn = true;
+  const isLoggedIn = true;
   // const isLoggedIn = useSelector((store) => store.auth.isLoggedIn);
-  const isLoggedIn = false;
+  // const isLoggedIn = false;
 
   if (!isLoggedIn) {
     return (
@@ -31,9 +33,11 @@ const Main = ({ navigation }) => {
   return (
     <Layout navigation={navigation}>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="//dashboard" element={<Dashboard />} />
         <Route path="/inspection-officers" element={<InspectionOfficers />} />
+        <Route path="/total-inspections" element={<TotalInspections />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/contact-us" element={<ContactUs />} />
 
         <Route path="*" element={<Page404 />} />
       </Routes>

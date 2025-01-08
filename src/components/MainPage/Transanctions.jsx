@@ -14,7 +14,7 @@ const Transanctions = () => {
 
   return (
     <div className="transanctions">
-      <h3>Order Processing</h3>
+      <h3>Inspection Processing</h3>
       <div className="transanctions-main-wrapper">
         <div className="transanctions-pie-chart">
           <PieChart width={300} height={300}>

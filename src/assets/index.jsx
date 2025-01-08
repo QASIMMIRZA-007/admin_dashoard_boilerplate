@@ -6,8 +6,6 @@ export { default as UserIcon } from "./icons/menu-icons/user.svg";
 export { default as LoginSvg } from "./icons/menu-icons/loginSvg.svg";
 export { default as LoginSvg2 } from "./images/loginSvg.svg";
 
-
-
 // Exporting Other Icons
 export { default as ArrowLeftIcon } from "./icons/tools-icons/arrow-left.svg";
 export { default as ArrowRightIcon } from "./icons/tools-icons/arrow-right.svg";
@@ -25,7 +23,6 @@ export { default as PrevPageIcon } from "./icons/tools-icons/prev-page-icon.svg"
 export { default as SearchIcon } from "./icons/tools-icons/search.svg";
 export { default as UserToolsIcon } from "./icons/tools-icons/user.svg";
 
-
 export { default as MaleIcon } from "./icons/tools-icons/male.svg";
 export { default as FemaleIcon } from "./icons/tools-icons/female.svg";
 export { default as ShemaleIcon } from "./icons/tools-icons/shemale.svg";
@@ -38,3 +35,6 @@ export { default as SeniorsIcon } from "./icons/tools-icons/seniors.svg";
 // Exporting Images
 export { default as ProfileImage } from "./images/profile.jpg";
 export { default as LogoImage } from "./images/logo.png";
+
+// Exporting SVGS
+export { default as logo } from "./projectSvgs/logo.svg";
