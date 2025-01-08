@@ -1,0 +1,107 @@
+.selectContainer {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 1rem;
+  
+    cursor: pointer;
+    user-select: none;
+  
+  }
+  
+  .selectHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: 55px;
+    
+  }
+  
+  .selectPlaceholder {
+    flex-grow: 1;
+    text-align: left;
+  }
+  
+  .selectOptions {
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    z-index: 10;
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+  
+  .selectOptions.openUpwards {
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .selectOption {
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .selectOption:last-child {
+    border-bottom: none;
+  }
+  
+  .selectOption:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .arrowIcon {
+    margin-left: 10px;
+  }
+  
+  // @import '../../styles/variables.scss';
+  
+  // .selectContainer {
+  //   position: relative;
+  //   width: 100%;
+  //   max-width: 600px;
+  //   margin-bottom: 1rem;
+  //   cursor: pointer;
+  //   user-select: none;
+  // }
+  
+  // .customAntSelect {
+  //   .ant-select-selector {
+  //     display: flex;
+  //     justify-content: space-between;
+  //     align-items: center;
+  //     padding: 0.75rem !important;
+  //     border: 1px solid #ddd !important;
+  //     border-radius: 8px !important;
+  //   }
+  
+  //   .ant-select-selection-placeholder {
+  //     flex-grow: 1;
+  //     text-align: left;
+  //   }
+  
+  //   .ant-select-arrow {
+  //     margin-left: 10px;
+  //   }
+  // }
+  
+  // .customAntDropdown {
+  //   .ant-select-item {
+  //     padding: 0.75rem !important;
+  //     border-bottom: 1px solid #ddd;
+  //   }
+  
+  //   .ant-select-item:last-child {
+  //     border-bottom: none;
+  //   }
+  
+  //   .ant-select-item-option-active {
+  //     background-color: #f1f1f1 !important;
+  //   }
+  // }
+  
