@@ -3,23 +3,36 @@ import React, { useState } from "react";
 import "./Profile.scss";
 import PrimaryButton from "../../components/UI/PrimaryButton";
 import { ProfileImage } from "../../assets";
+import { usePatchApi } from "../../hooks/api";
+import { useSelector } from "react-redux";
+import { FaRegEye } from "react-icons/fa";
+import { Form, Input } from "antd";
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import axios from "axios";
+import { BASE_URL } from "../../config/api";
 
 const Profile = () => {
+  const { handleMutation } = usePatchApi();
+  const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.auth.user);
   const [profileImage, setProfileImage] = useState(ProfileImage);
+  const [passwordVisible, setPasswordVisible] = React.useState(false);
+
   const [formData, setFormData] = useState({
-    name: "John",
-    lastName: "Doe",
-    email: "john@example.com",
-    password: "123456",
+    name: user?.first_name,
+    lastName: user?.last_name,
+    email: user?.email,
+    password: "******",
     confirmPassword: "",
   });
-
+  const [form] = Form.useForm();
   const [formErrors, setFormErrors] = useState({
     name: "",
     lastName: "",
     password: "",
     confirmPassword: "",
   });
+  console.log("user", user);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -39,8 +52,15 @@ const Profile = () => {
     setFormData((prevState) => ({ ...prevState, [name]: value }));
     setFormErrors((prevState) => ({ ...prevState, [name]: "" }));
   };
+  const onFinish = (values) => {
+    if (values.password === values.confirmPassword) {
+      message.success("Password and Confirm Password match!");
+    } else {
+      message.error("Password and Confirm Password do not match!");
+    }
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let errors = {};
     let hasErrors = false;
@@ -68,8 +88,38 @@ const Profile = () => {
     if (hasErrors) {
       setFormErrors(errors);
     } else {
-      // Form submission logic
       console.log("Form submitted:", formData);
+
+      const res = await axios.patch(
+        `${BASE_URL}/admin/update_admin`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(res);
+      if (res.status === 200) {
+        toast.success("Profile updated successful!");
+        navigate("/admin/dashboard");
+      } else {
+        toast.error("An unexpected error occurred");
+      }
+      // handleMutation(
+      //   {
+      //     path: "admin/update_admin",
+      //     data: formData,
+      //   },
+      //   (response) => {
+      //     console.log("Profile updated Successfully:", response);
+      //     toast.success("Profile updated successful!");
+      //   },
+      //   (error) => {
+      //     console.error("Profile updated failed:", error);
+      //     toast.error(error?.message || "Profile updated failed!");
+      //   }
+      // );
     }
   };
 
@@ -130,31 +180,167 @@ const Profile = () => {
               />
             </div>
 
-            <div className="form-group">
-              <input
+            <div className="form-group ant-input-group">
+              {/* <input
                 type="password"
                 id="password"
                 name="password"
                 placeholder="New password"
                 value={formData.password}
                 onChange={handleInputChange}
-              />
+              /> */}
+              {/* <Input.Password
+                placeholder="New password"
+                className="ant-input"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                style={{
+                  width: "100%",
+                  height: "50px",
+                  outline: "none",
+                  border: "none !important",
+                  background: "transparent",
+                  color: "#000",
+                }}
+                iconRender={(visible) =>
+                  visible ? (
+                    <EyeTwoTone
+                      style={{ color: "#000 !important", fontSize: "16px" }}
+                    />
+                  ) : (
+                    <EyeInvisibleOutlined
+                      style={{ color: "#000 !important", fontSize: "16px" }}
+                    />
+                  )
+                }
+              /> */}
+
               {formErrors.password && (
                 <p className="error">{formErrors.password}</p>
               )}
             </div>
-            <div className="form-group">
-              <input
+            <div className="form-group ">
+              {/* <input
                 type="text"
                 id="confirmPassword"
                 name="confirmPassword"
                 placeholder="Confirm password"
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
-              />
-              {formErrors.confirmPassword && (
-                <p className="error">{formErrors.confirmPassword}</p>
-              )}
+              /> */}
+
+              <div className="ant-input-group">
+                <Form
+                  form={form}
+                  onFinish={onFinish}
+                  layout="vertical"
+                  initialValues={{ remember: true }}
+                  style={{ maxWidth: "100%" }}
+                >
+                  <Form.Item
+                    label=""
+                    name="password"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your password!",
+                      },
+                      {
+                        min: 6,
+                        message: "Password must be at least 6 characters long!",
+                      },
+                    ]}
+                  >
+                    <Input.Password
+                      placeholder="Password"
+                      value={formData.password}
+                      name="password"
+                      onChange={handleInputChange}
+                      style={{
+                        width: "100%",
+                        height: "50px",
+                        outline: "none",
+                        border: "none !important",
+                        background: "transparent",
+                        color: "#000",
+                      }}
+                      iconRender={(visible) =>
+                        visible ? (
+                          <EyeTwoTone
+                            style={{
+                              color: "#000 !important",
+                              fontSize: "16px",
+                            }}
+                          />
+                        ) : (
+                          <EyeInvisibleOutlined
+                            style={{
+                              color: "#000 !important",
+                              fontSize: "16px",
+                            }}
+                          />
+                        )
+                      }
+                    />
+                  </Form.Item>
+
+                  <Form.Item
+                    label=""
+                    name="confirmPassword"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please confirm your password!",
+                      },
+                      {
+                        validator: (_, value) =>
+                          value && value === formData.password
+                            ? Promise.resolve()
+                            : Promise.reject(
+                                new Error("Passwords do not match!")
+                              ),
+                      },
+                    ]}
+                  >
+                    <Input.Password
+                      placeholder="Confirm password"
+                      value={formData.confirmPassword}
+                      name="confirmPassword"
+                      onChange={handleInputChange}
+                      style={{
+                        width: "100%",
+                        height: "50px",
+                        outline: "none",
+                        border: "none !important",
+                        background: "transparent",
+                        color: "#000",
+                      }}
+                      iconRender={(visible) =>
+                        visible ? (
+                          <EyeTwoTone
+                            style={{
+                              color: "#000 !important",
+                              fontSize: "16px",
+                            }}
+                          />
+                        ) : (
+                          <EyeInvisibleOutlined
+                            style={{
+                              color: "#000 !important",
+                              fontSize: "16px",
+                            }}
+                          />
+                        )
+                      }
+                    />
+                  </Form.Item>
+                </Form>
+                {/* {formErrors.confirmPassword && (
+                  <p className="error">{formErrors.confirmPassword}</p>
+                )} */}
+              </div>
             </div>
             <PrimaryButton type="submit">Update</PrimaryButton>
           </form>

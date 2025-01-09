@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Redux/slices/authSlice";
 import { Popconfirm } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
+import { toast } from "react-toastify";
 
 const Sidebar = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -35,17 +36,22 @@ const Sidebar = ({ navigation }) => {
   });
 
   const handleLogout = () => {
-    handleMutation(
-      {
-        path: "auth/logout",
-        data: { refreshToken: auth.refreshToken },
-      },
-      (res) => {
-        console.log(res);
-        dispatch(logout());
-        navigate("/admin");
-      }
-    );
+    // handleMutation(
+    //   {
+    //     path: "auth/logout",
+    //     data: { refreshToken: auth.token },
+    //   },
+    //   (res) => {
+    //     console.log(res);
+    //     dispatch(logout());
+    //     navigate("/admin");
+    //   }
+    // );
+    dispatch(logout());
+    toast.success(" successfully Logged out!", {
+      autoClose: 1000,
+    });
+    navigate("/admin");
   };
 
   return (

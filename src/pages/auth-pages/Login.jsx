@@ -10,6 +10,7 @@ import { ReactSVG } from "react-svg";
 import { logo } from "../../assets";
 import axios from "axios";
 import { BASE_URL } from "../../config/api";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -47,52 +48,55 @@ const Login = () => {
     return valid;
   };
 
-  const onSubmitLogin = async () => {
+  const onSubmitLogin = async (e) => {
+    e.preventDefault();
     if (validateForm()) {
       // handleMutation(
       //   {
       //     path: `auth/login`,
       //     data: formValues,
       //   },
-      //   navigate("/admin/dashboard"),
       //   (res) => {
       //     console.log(res, "response from login api");
       //     dispatch(
       //       login({
       //         user: res.user,
       //         token: res.tokens.access.token,
-      //         refreshToken: res.tokens.refresh.token,
-      //         tokenExpiry: res.tokens.access.expires,
-      //         refreshTokenExpiry: res.tokens.refresh.expires,
+      //         // refreshToken: res.tokens.refresh.token,
+      //         // tokenExpiry: res.tokens.access.expires,
+      //         // refreshTokenExpiry: res.tokens.refresh.expires,
       //       })
       //     );
       //     message.success("Login successful");
+      //     navigate("/admin/dashboard");
       //   }
       // );
-      try {
-        const response = await axios.post(`${BASE_URL}auth/login`, formValues);
+    }
 
-        if (response.status === 200) {
-          const res = response.data;
-          navigate("/admin");
-          console.log(res, "response from login API");
+    try {
+      const response = await axios.post(`${BASE_URL}/auth/login`, formValues);
+      if (response.status === 200) {
+        const res = response.data;
+        navigate("/admin/dashboard");
+        console.log(res, "response from login API");
 
-          // dispatch(
-          //   login({
-          //     // user: res?.user,
-          //     // token: res?.token,
-          //     // refreshToken: res.tokens.refresh.token,
-          //     // tokenExpiry: res.tokens.access.expires,
-          //     // refreshTokenExpiry: res.tokens.refresh.expires,
-          //   })
-          // );
-          // message.success("Login successful");
-        } else {
-          message.error("An unexpected error occurred");
-        }
-      } catch (error) {
-        console.error("Error during API call:", error);
+        dispatch(
+          login({
+            user: res?.user,
+            token: res?.token,
+            // refreshToken: res.tokens.refresh.token,
+            // tokenExpiry: res.tokens.access.expires,
+            // refreshTokenExpiry: res.tokens.refresh.expires,
+          })
+        );
+        toast.success("Login successful", {
+          autoClose: 1000,
+        });
+      } else {
+        toast.error("An unexpected error occurred");
       }
+    } catch (error) {
+      console.error("Error during API call:", error);
     }
   };
 

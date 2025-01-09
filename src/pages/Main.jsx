@@ -15,8 +15,9 @@ import TotalInspections from "./TotalInspections/TotalInspections";
 import ContactUs from "./ContactUs/ContactUs";
 
 const Main = ({ navigation }) => {
-  const isLoggedIn = true;
-  // const isLoggedIn = useSelector((store) => store.auth.isLoggedIn);
+  // const isLoggedIn = true;
+  const isLoggedIn = useSelector((store) => store.auth.isLoggedIn);
+  console.log("isLoggedIn", isLoggedIn);
   // const isLoggedIn = false;
 
   if (!isLoggedIn) {

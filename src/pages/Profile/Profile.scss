@@ -42,7 +42,7 @@
           font-weight: 500;
           font-size: 15px;
           outline: none;
-          border: 1px solid #999;
+          border: 1px solid #d2d2d2;
           &::placeholder {
             color: #9999;
           }
@@ -62,4 +62,21 @@
       }
     }
   }
+}
+.ant-input-group {
+  // border: 1px solid #d2d2d2;
+  border-radius: 8px;
+  .ant-input {
+    border: none !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    font-family: $primaryFont !important;
+    &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+}
+.ant-input-outlined:focus-within {
+  box-shadow: none !important;
 }

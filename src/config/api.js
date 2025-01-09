@@ -1,7 +1,7 @@
 import { NODE_ENV } from "./app";
 
 // URLs
-const local = "http://localhost:5000/api/";
+const local = "http://localhost:5000/api";
 const development = "http://localhost:3000/v1";
 const production = "http://localhost:3000/v1";
 
