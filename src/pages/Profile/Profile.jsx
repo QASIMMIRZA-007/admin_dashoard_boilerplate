@@ -236,7 +236,7 @@ const Profile = () => {
                   form={form}
                   onFinish={onFinish}
                   layout="vertical"
-                  initialValues={{ remember: true }}
+                  initialValues={{ remember: true }}  
                   style={{ maxWidth: "100%" }}
                 >
                   <Form.Item
